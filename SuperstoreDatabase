@@ -29,17 +29,20 @@ VALUES
 
 # For this project I use SQL to query the Superstore database to get information about the items sold here.
 
+-- Order out all items in store displayed highest price first
 SELECT * FROM superstore
 ORDER BY price DESC;
 
+-- Find the average price of items for each category
 SELECT category, ROUND(AVG(price), 2) AS avg_price FROM superstore
 GROUP BY category
 ORDER BY avg_price;
 
+-- Find most expensive item in Kitchen Supplies
 SELECT category, MAX(price) FROM superstore
 WHERE category LIKE 'kitchen supplies'
 GROUP BY category;
 
-/*How many Wireless Earbuds in stock and total potential sales*/
+-- How many Wireless Earbuds in stock and total potential sales
 SELECT item_name, stock_quantity, price * stock_quantity AS potential_sales FROM superstore
 WHERE item_name LIKE 'wireless earbuds';
